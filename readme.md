@@ -1,24 +1,11 @@
-# CSS Reset and Utility Classes
+# 🎨 Boilerplates: A collection of pre-configured project setups
 
-This is a CSS file that provides a reset style for default browser styles and defines some utility classes for easy control of element visibility on different breakpoints.
+---
 
-## Features
+## 💄 Introduction
 
-Reset styles for default browser styles
-Utility classes for controlling element visibility on different breakpoints
-Variables for customizing typography, colors, borders, shadows, animations, line heights, paddings, margins, and breakpoints
+This repository contains a collection of boilerplates for various development projects. Each boilerplate is a pre-configured project setup with essential files, dependencies, and configurations to help you quickly start a new project with best practices in mind.
 
-## Usage
+## ✨ Additional notes
 
-Include this CSS file in the head of your HTML document.
-
-```html
-<head>
-    <link rel="stylesheet" href="path/to/styles.css">
-</head>
-
-```
-
-## Customization
-
-You can customize the variables in the `:root` selector to fit your project's style.
+- This repository is a work in progress, and new boilerplates are added regularly.
