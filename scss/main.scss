@@ -1,0 +1,290 @@
+:root {
+  // || TypoGraphy
+  --ff-base: Inter, Arial, Helvetica, sans-serif;
+
+  // Font Sizes
+  --fs-h1: 4em;
+  --fs-h2: 2.25em;
+  --fs-h3: 1.75em;
+  --fs-h4: 1.25em;
+  --fs-h5: 1.125em;
+  --fs-base: 1em;
+  --fs-sm: 0.875em;
+  --fs-xsm: 0.75em;
+
+  // || Colors
+  --color-primary: #4caf4f;
+  --color-primary-1: #43a046;
+  --color-primary-2: #388e3b;
+  --color-primary-3: #237d31;
+  --color-primary-4: #1b5e1f;
+  --color-primary-5: #103e13;
+  --color-secondary: #263238;
+
+  --color-text: #263238;
+
+  --color-info: #2194f3;
+  --color-action-warning: #fbc02d;
+  --color-action-error: #e53835;
+  --color-action-success: #2e7d31;
+
+  --color-neutral-silver: #f5f7fa;
+  --color-neutral-grey: #717171;
+  --color-neutral-grey-dark: #4d4d4d;
+  --color-neutral-black: #263238;
+
+  --color-white-20: #ffffff1b;
+  --color-pure-white: #fff;
+
+  // || Border radius
+  --rounded-1: 6px;
+
+  // || Shadows
+  --shadow-sm: 0px 2px 4px rgba(171, 190, 209, 0.2);
+  --shadow-md: 0px 4px 8px rgba(171, 190, 209, 0.4);
+  --shadow-lg: 0px 6px 12px rgba(171, 190, 209, 0.3);
+  --shadow-xl: 0px 8px 16px rgba(171, 190, 209, 0.4);
+  --shadow-2xl: 0px 16px 32px rgba(171, 190, 209, 0.3);
+
+  // || Animation Easing
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  // || Line Heights
+  --lh-sm: 1.1;
+  --lh-base: 1.2;
+  --lh-1: 1.3;
+  --lh-2: 1.425;
+  --lh-3: 1.5;
+  --lh-4: 1.6;
+
+  // || Paddings and Margins
+  --pm-sm: 0.5em;
+  --pm-base: 1em;
+  --pm-1: 1.5em;
+  --pm-2: 2em;
+  --pm-3: 2.5em;
+  --pm-4: 3em;
+  --pm-5: 9em;
+
+  // || Breakpoints
+  --device-mobile: 360px;
+  --device-mobile-lg: 560px;
+  --device-tablet: 768px;
+  --device-tablet-lg: 991px;
+  --device-desktop-sm: 1024px;
+  --device-desktop-md: 1280px;
+  --device-desktop-lg: 1440px;
+  --device-desktop-xl: 1920px;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: inherit;
+  -webkit-tap-highlight-color: transparent; /* to remove the tap highlights on touch screens */
+}
+
+html {
+  font-size: 1rem; /* fallback */
+  font-size: clamp(1rem, 1rem + 0.001vw, 1rem); /* 16px */
+}
+
+body {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+
+  font-family: var(--ff-base);
+
+  font-size: 1em;
+
+  color: var(--color-text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: inherit;
+  font-weight: bold;
+  color: inherit;
+}
+
+/* --------------------------------------- */
+
+/* || Other H1-H6 and typography style guides here. */
+
+/* --------------------------------------- */
+
+a,
+button {
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  appearance: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+img,
+svg,
+picture,
+video {
+  width: 100vw;
+  height: 100%;
+  max-width: 100%;
+  object-position: center;
+}
+
+.img {
+  // Must be used as an image parent div to get the pefect responsiveness in images.
+  display: flex;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+// || Utility classes
+.container {
+  width: min(
+    100% - 18em,
+    90em - 18em
+  ); // change according to your project style
+  margin-inline: auto;
+}
+
+/* -------------------------------------------------------------- */
+/* Control element visibility on different breakpoints easily*/
+.is--visible-on-mobile {
+  display: unset;
+}
+.is--visible-on-mobile-lg {
+  display: none;
+}
+.is--visible-on-tablet {
+  display: none;
+}
+.is--visible-on-tablet-lg {
+  display: none;
+}
+.is--visible-on-desktop-sm {
+  display: none;
+}
+.is--visible-on-desktop-md {
+  display: none;
+}
+.is--visible-on-desktop-lg {
+  display: none;
+}
+.is--visible-on-desktop-xl {
+  display: none;
+}
+.is--visible-from-mobile-lg {
+  display: none;
+}
+.is--visible-from-tablet {
+  display: none;
+}
+.is--visible-from-tablet-lg {
+  display: none;
+}
+.is--visible-from-desktop-sm {
+  display: none;
+}
+.is--visible-from-desktop-md {
+  display: none;
+}
+.is--visible-from-desktop-lg {
+  display: none;
+}
+.is--visible-from-desktop-xl {
+  display: none;
+}
+/* ----------------------------------------------------------------- */
+
+// || Mobile Lg or Landscape
+@media screen and (min-width: var(--device-mobile-lg)) {
+  .is--visible-on-mobile-lg,
+  .is--visible-from-mobile-lg {
+    display: unset;
+  }
+  .is--visible-on-mobile {
+    display: unset;
+  }
+
+  /* Other styles goes here */
+}
+
+/* This media quries are designed to work as an "Mobile first" design system */
+// || TABLET
+@media screen and (min-width: var(--device-tablet)) {
+  .is--visible-on-mobile-lg {
+    display: none;
+  }
+  .is--visible-on-tablet,
+  .is--visible-from-tablet {
+    display: unset;
+  }
+
+  /* Other styles goes here */
+}
+
+// || TABLET Lg  or Landscape
+@media screen and (min-width: var(--device-tablet-lg)) {
+  .is--visible-on-tablet {
+    display: none;
+  }
+  .is--visible-on-tablet-lg,
+  .is--visible-from-tablet-lg {
+    display: unset;
+  }
+
+  /* Other styles goes here */
+}
+// || DESKTOP Sm
+@media screen and (min-width: var(--device-desktop-sm)) {
+  .is--visible-on-tablet-lg {
+    display: none;
+  }
+  .is--visible-on-desktop-sm,
+  .is--visible-from-desktop-sm {
+    display: unset;
+  }
+
+  /* Other styles goes here */
+}
+
+// || DESKTOP Md
+@media screen and (min-width: var(--device-desktop-md)) {
+  .is--visible-on-desktop-sm {
+    display: none;
+  }
+  .is--visible-on-desktop-md,
+  .is--visible-from-desktop-md {
+    display: unset;
+  }
+
+  /* Other styles goes here */
+}
+
+// || DESKTOP Lg
+@media screen and (min-width: var(--device-desktop-lg)) {
+  .is--visible-on-desktop-md {
+    display: none;
+  }
+  .is--visible-on-desktop-lg,
+  .is--visible-from-desktop-lg {
+    display: unset;
+  }
+
+  /* Other styles goes here */
+}
