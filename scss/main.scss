@@ -1,3 +1,13 @@
+// || Breakpoints
+$device-mobile: 360px;
+$device-mobile-lg: 560px;
+$device-tablet: 768px;
+$device-tablet-lg: 991px;
+$device-desktop-sm: 1024px;
+$device-desktop-md: 1280px;
+$device-desktop-lg: 1440px;
+$device-desktop-xl: 1920px;
+
 :root {
   // || TypoGraphy
   --ff-base: Inter, Arial, Helvetica, sans-serif;
@@ -65,16 +75,6 @@
   --pm-3: 2.5em;
   --pm-4: 3em;
   --pm-5: 9em;
-
-  // || Breakpoints
-  --device-mobile: 360px;
-  --device-mobile-lg: 560px;
-  --device-tablet: 768px;
-  --device-tablet-lg: 991px;
-  --device-desktop-sm: 1024px;
-  --device-desktop-md: 1280px;
-  --device-desktop-lg: 1440px;
-  --device-desktop-xl: 1920px;
 }
 
 *,
@@ -212,12 +212,12 @@ video {
 /* ----------------------------------------------------------------- */
 
 // || Mobile Lg or Landscape
-@media screen and (min-width: var(--device-mobile-lg)) {
+@media screen and (min-width: device-mobile-lg) {
+  .is--visible-on-mobile {
+    display: none;
+  }
   .is--visible-on-mobile-lg,
   .is--visible-from-mobile-lg {
-    display: unset;
-  }
-  .is--visible-on-mobile {
     display: unset;
   }
 
@@ -226,7 +226,7 @@ video {
 
 /* This media quries are designed to work as an "Mobile first" design system */
 // || TABLET
-@media screen and (min-width: var(--device-tablet)) {
+@media screen and (min-width: device-tablet) {
   .is--visible-on-mobile-lg {
     display: none;
   }
@@ -239,7 +239,7 @@ video {
 }
 
 // || TABLET Lg  or Landscape
-@media screen and (min-width: var(--device-tablet-lg)) {
+@media screen and (min-width: device-tablet-lg) {
   .is--visible-on-tablet {
     display: none;
   }
@@ -251,7 +251,7 @@ video {
   /* Other styles goes here */
 }
 // || DESKTOP Sm
-@media screen and (min-width: var(--device-desktop-sm)) {
+@media screen and (min-width: device-desktop-sm) {
   .is--visible-on-tablet-lg {
     display: none;
   }
@@ -264,7 +264,7 @@ video {
 }
 
 // || DESKTOP Md
-@media screen and (min-width: var(--device-desktop-md)) {
+@media screen and (min-width: device-desktop-md) {
   .is--visible-on-desktop-sm {
     display: none;
   }
@@ -277,7 +277,7 @@ video {
 }
 
 // || DESKTOP Lg
-@media screen and (min-width: var(--device-desktop-lg)) {
+@media screen and (min-width: device-desktop-lg) {
   .is--visible-on-desktop-md {
     display: none;
   }
