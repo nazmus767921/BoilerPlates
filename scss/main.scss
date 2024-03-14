@@ -1,3 +1,6 @@
+// ||Fonts
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+
 // || Breakpoints
 $device-mobile: 360px;
 $device-mobile-lg: 560px;
@@ -8,64 +11,70 @@ $device-desktop-md: 1280px;
 $device-desktop-lg: 1440px;
 $device-desktop-xl: 1920px;
 
-:root {
-  // || TypoGraphy
-  --ff-base: Inter, Arial, Helvetica, sans-serif;
+/* Fluid font size variables, for browsers that support clamp */
+// -- on 360px the base font size is 16 and scale ratio is 1.125 (major second) and
+// -- on 1440px the base font size is 16 and scale ration is 1.2 (minor third)
 
-  // Font Sizes
-  --fs-h1: 4em;
-  --fs-h2: 2.25em;
-  --fs-h3: 1.75em;
-  --fs-h4: 1.25em;
-  --fs-h5: 1.125em;
-  --fs-base: 1em;
-  --fs-sm: 0.875em;
-  --fs-xsm: 0.75em;
+/* Fluid font size variables, for browsers that support clamp */
+@supports (font-size: clamp(1rem, 1vw, 1rem)) {
+  :root {
+    --fs-sm: clamp(1.42rem, -0.08vw + 1.45rem, 1.33rem);
+    --fs-base: clamp(1.6rem, 0vw + 1.6rem, 1.6rem);
+    --fs-h6: clamp(1.8rem, 0.11vw + 1.76rem, 1.92rem);
+    --fs-h5: clamp(2.02rem, 0.26vw + 1.93rem, 2.3rem);
+    --fs-h4: clamp(2.28rem, 0.46vw + 2.11rem, 2.76rem);
+    --fs-h3: clamp(2.56rem, 0.71vw + 2.3rem, 3.32rem);
+    --fs-h2: clamp(2.88rem, 1.03vw + 2.5rem, 3.98rem);
+    --fs-h1: clamp(3.24rem, 1.44vw + 2.7rem, 4.78rem);
+  }
+}
+/* Fallback variables for browsers that don't support clamp */
+@supports not (font-size: clamp(1rem, 1vw, 1rem)) {
+  :root {
+    --fs-sm: 1.42rem;
+    --fs-base: 1.6rem;
+    --fs-h6: 1.8rem;
+    --fs-h5: 2.02rem;
+    --fs-h4: 2.28rem;
+    --fs-h3: 2.56rem;
+    --fs-h2: 2.88rem;
+    --fs-h1: 3.24rem;
+  }
+  @media screen and (min-width: 1440px) {
+    :root {
+      --fs-sm: 1.33rem;
+      --fs-base: 1.6rem;
+      --fs-h6: 1.92rem;
+      --fs-h5: 2.3rem;
+      --fs-h4: 2.76rem;
+      --fs-h3: 3.32rem;
+      --fs-h2: 3.98rem;
+      --fs-h1: 4.78rem;
+    }
+  }
+}
+
+:root {
+  font-size: 62.5%; /* equal = 10px ; To determine any sizes to rem just divide it by 10. */
+  // || TypoGraphy
+  --ff-base: "Roboto Mono", monospace, -apple-system, BlinkMacSystemFont;
 
   // || Colors
-  --color-primary: #4caf4f;
-  --color-primary-1: #43a046;
-  --color-primary-2: #388e3b;
-  --color-primary-3: #237d31;
-  --color-primary-4: #1b5e1f;
-  --color-primary-5: #103e13;
-  --color-secondary: #263238;
-
-  --color-text: #263238;
-
-  --color-info: #2194f3;
-  --color-action-warning: #fbc02d;
-  --color-action-error: #e53835;
-  --color-action-success: #2e7d31;
-
-  --color-neutral-silver: #f5f7fa;
-  --color-neutral-grey: #717171;
-  --color-neutral-grey-dark: #4d4d4d;
-  --color-neutral-black: #263238;
-
-  --color-white-20: #ffffff1b;
-  --color-pure-white: #fff;
+  --color-brand: #2a9d8f;
+  --color-text: #2f2f2f;
+  --color-secondary: #264653;
+  --color-background: #f9f9f9;
 
   // || Border radius
   --rounded-1: 6px;
-
-  // || Shadows
-  --shadow-sm: 0px 2px 4px rgba(171, 190, 209, 0.2);
-  --shadow-md: 0px 4px 8px rgba(171, 190, 209, 0.4);
-  --shadow-lg: 0px 6px 12px rgba(171, 190, 209, 0.3);
-  --shadow-xl: 0px 8px 16px rgba(171, 190, 209, 0.4);
-  --shadow-2xl: 0px 16px 32px rgba(171, 190, 209, 0.3);
 
   // || Animation Easing
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
   // || Line Heights
-  --lh-sm: 1.1;
-  --lh-base: 1.2;
-  --lh-1: 1.3;
-  --lh-2: 1.425;
-  --lh-3: 1.5;
-  --lh-4: 1.6;
+  --lh-base: 1.1;
+  --lh-p: 1.5;
+  --lh-p-sm: 1.33;
 
   // || Paddings and Margins
   --pm-sm: 0.5em;
@@ -88,20 +97,34 @@ $device-desktop-xl: 1920px;
 }
 
 html {
-  font-size: 1rem; /* fallback */
-  font-size: clamp(1rem, 1rem + 0.001vw, 1rem); /* 16px */
+  font-family: var(--ff-base);
+
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
-  text-rendering: optimizeLegibility !important;
-  -webkit-font-smoothing: antialiased !important;
-
-  font-family: var(--ff-base);
-
-  font-size: 1em;
-
   color: var(--color-text);
+  background-color: var(--color-bg);
+  overflow-x: hidden; // --fixes for horizontal scrolling
+}
+
+// --custom scrollbar-----------------
+body::-webkit-scrollbar {
+  width: 0.7rem;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--color-brand);
+  outline: none;
+}
+// --custom scrollbar------------------
+
+section {
+  width: 100%;
+  min-height: 100vh;
 }
 
 h1,
@@ -110,26 +133,72 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: inherit;
+  font-family: var(--ff-base);
   font-weight: bold;
   color: inherit;
+  line-height: var(--lh-base);
 }
 
 /* --------------------------------------- */
 
-/* || Other H1-H6 and typography style guides here. */
+h1 {
+  font-size: var(--fs-h1);
+}
+h2 {
+  font-size: var(--fs-h2);
+}
+h3 {
+  font-size: var(--fs-h3);
+}
+h4 {
+  font-size: var(--fs-h4);
+}
+h5 {
+  font-size: var(--fs-h5);
+}
+h6 {
+  font-size: var(--fs-h6);
+}
+
+p {
+  font-size: 1.6rem;
+  line-height: var(--lh-p);
+}
+
+p.is--sm {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-p-sm);
+}
 
 /* --------------------------------------- */
 
 a,
-button {
+button,
+input,
+select,
+textarea {
   color: inherit;
   background-color: transparent;
   border: none;
   outline: none;
   appearance: none;
   text-decoration: none;
+}
+input,
+select,
+textarea {
+  &::placeholder {
+    opacity: 0.6;
+  }
+}
+
+a,
+button {
   cursor: pointer;
+}
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 li {
@@ -146,7 +215,17 @@ video {
   object-position: center;
 }
 
-.img {
+svg,
+svg g {
+  fill: currentColor;
+}
+svg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img__wrapper {
   // Must be used as an image parent div to get the pefect responsiveness in images.
   display: flex;
   object-fit: cover;
@@ -155,136 +234,26 @@ video {
 
 // || Utility classes
 .container {
-  width: min(
-    100% - 18em,
-    90em - 18em
-  ); // change according to your project style
+  // --360px(min),1440px(max)
+  width: clamp(36rem, 100vw, 144rem);
+  padding-inline: clamp(2rem, 5.56vw + 0rem, 8rem);
   margin-inline: auto;
 }
-
-/* -------------------------------------------------------------- */
-/* Control element visibility on different breakpoints easily*/
-.is--visible-on-mobile {
-  display: unset;
-}
-.is--visible-on-mobile-lg {
-  display: none;
-}
-.is--visible-on-tablet {
-  display: none;
-}
-.is--visible-on-tablet-lg {
-  display: none;
-}
-.is--visible-on-desktop-sm {
-  display: none;
-}
-.is--visible-on-desktop-md {
-  display: none;
-}
-.is--visible-on-desktop-lg {
-  display: none;
-}
-.is--visible-on-desktop-xl {
-  display: none;
-}
-.is--visible-from-mobile-lg {
-  display: none;
-}
-.is--visible-from-tablet {
-  display: none;
-}
-.is--visible-from-tablet-lg {
-  display: none;
-}
-.is--visible-from-desktop-sm {
-  display: none;
-}
-.is--visible-from-desktop-md {
-  display: none;
-}
-.is--visible-from-desktop-lg {
-  display: none;
-}
-.is--visible-from-desktop-xl {
-  display: none;
-}
-/* ----------------------------------------------------------------- */
-
-// || Mobile Lg or Landscape
-@media screen and (min-width: device-mobile-lg) {
-  .is--visible-on-mobile {
-    display: none;
+@media screen and (min-width: $device-mobile) and (max-width: $device-desktop-lg) {
+  .container {
+    // --360px(min),1440px(max)
+    width: clamp(36rem, 100vw, 144rem);
+    padding-inline: clamp(2rem, 5.56vw + 0rem, 8rem);
+    margin-inline: auto;
   }
-  .is--visible-on-mobile-lg,
-  .is--visible-from-mobile-lg {
-    display: unset;
-  }
-
-  /* Other styles goes here */
 }
 
-/* This media quries are designed to work as an "Mobile first" design system */
-// || TABLET
-@media screen and (min-width: device-tablet) {
-  .is--visible-on-mobile-lg {
-    display: none;
-  }
-  .is--visible-on-tablet,
-  .is--visible-from-tablet {
-    display: unset;
-  }
-
-  /* Other styles goes here */
+.is--brand {
+  color: var(--color-brand);
 }
 
-// || TABLET Lg  or Landscape
-@media screen and (min-width: device-tablet-lg) {
-  .is--visible-on-tablet {
-    display: none;
-  }
-  .is--visible-on-tablet-lg,
-  .is--visible-from-tablet-lg {
-    display: unset;
-  }
-
-  /* Other styles goes here */
-}
-// || DESKTOP Sm
-@media screen and (min-width: device-desktop-sm) {
-  .is--visible-on-tablet-lg {
-    display: none;
-  }
-  .is--visible-on-desktop-sm,
-  .is--visible-from-desktop-sm {
-    display: unset;
-  }
-
-  /* Other styles goes here */
-}
-
-// || DESKTOP Md
-@media screen and (min-width: device-desktop-md) {
-  .is--visible-on-desktop-sm {
-    display: none;
-  }
-  .is--visible-on-desktop-md,
-  .is--visible-from-desktop-md {
-    display: unset;
-  }
-
-  /* Other styles goes here */
-}
-
-// || DESKTOP Lg
-@media screen and (min-width: device-desktop-lg) {
-  .is--visible-on-desktop-md {
-    display: none;
-  }
-  .is--visible-on-desktop-lg,
-  .is--visible-from-desktop-lg {
-    display: unset;
-  }
-
-  /* Other styles goes here */
+.centerHorizontally {
+  margin-inline: auto;
+  width: -moz-fit-content;
+  width: fit-content;
 }
